@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>批量添加逗号批量替换成英文</title>
+
+
+<script>
+function getData(){
+var content = document.getElementById("1");
+var  str =content.value.toString();
+var str1=str.replace(/\n/g,",");
+var str2=str1.replace(/，/ig,',');
+var str3=str2.replace(/、/ig,',');
+var content1= document.getElementById("2");
+content1.value=str3;
+
+}
+function getData1(){
+var content = document.getElementById("1");
+var  str =content.value.toString();
+var str1=str.replace(/\n/g,",");
+var str2=str1.replace(/，/ig,',');
+var str3=str2.replace(/、/ig,',');
+var content1= document.getElementById("2");
+content1.value=str3;
+
+}
+
+function getData2(){
+var content = document.getElementById("3");
+var  str =content.value.toString();
+var str1=str.replace(/[^\d]/g,' ');
+var str2=str1.split(/\s+/);
+var str3 = str2.toString();
+var strs=new Array();
+var strs = str3.split(",");
+var strsint=strs.map(Number);
+var result='';
+for(var i=0;i<strsint.length;i++){
+   if(strsint[i]>=66000000000000)
+   {
+    result=result+strsint[i];
+	result=result+',';
+   }
+}
+result=(result.substring(result.length-1)==',')?result.substring(0,result.length-1):result;
+var content1= document.getElementById("4");
+content1.value=result;
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+处理前：<textarea rows="20" cols="50" id="1" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+处理后：<textarea rows="20" cols="50" id="2" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+<br/>
+<input type="button"  value="批加逗号批量替换成英文" style="margin-left:430px" onclick="getData()" /><br/>
+<br/>
+提取前：<textarea rows="20" cols="50" id="3" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+提取后：<textarea rows="20" cols="50" id="4" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea><br/>
+<input type="button"  value="提取套餐ID" style="margin-left:430px" onclick="getData2()" /><br/>
+<br/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
