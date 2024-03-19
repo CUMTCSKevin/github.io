@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>批量添加逗号批量替换成英文</title>
+<script>
+/*
+function getData(){
+var content = document.getElementById("1");
+var  str =content.value.toString();
+var str1=str.replace(/\n/g,",");
+var str2=str1.replace(/，/ig,',');
+var str3=str2.replace(/、/ig,',');
+var content1= document.getElementById("2");
+content1.value=str3;
+}
+function getData1(){
+var content = document.getElementById("1");
+var  str =content.value.toString();
+var str1=str.replace(/\n/g,",");
+var str2=str1.replace(/，/ig,',');
+var str3=str2.replace(/、/ig,',');
+var content1= document.getElementById("2");
+content1.value=str3;
+}
+*/
+function copyfanchuang()
+{
+var Url2=document.getElementById("4");
+Url2.select(); // 选择对象
+document.execCommand("Copy"); // 执行浏览器复制命令
+　　　if(　document.execCommand("Copy")==true){
+　　　　    　layer.msg('复制成功'); //弹窗
+　　　　}
+}
+function copyfanchuang2()
+{
+var Url2=document.getElementById("5");
+Url2.select(); // 选择对象
+document.execCommand("Copy"); // 执行浏览器复制命令
+　　　if(　document.execCommand("Copy")==true){
+　　　　    　layer.msg('复制成功'); //弹窗
+　　　　}
+}
+
+function getData2(){
+var content = document.getElementById("3");
+var  str =content.value.toString();
+var str1=str.replace(/[^\d]/g,' ');
+var str2=str1.split(/\s+/);
+var str3 = str2.toString();
+var strs=new Array();
+var strs = str3.split(",");
+var strsint=strs.map(Number);
+var result='';
+var count=0;
+var frequency=Math.ceil(strsint.length/100);
+for(var i=0;i<strsint.length;i++){
+   if(strsint[i]>=66000000000000)
+   {
+    result=result+strsint[i];
+	result=result+',';
+	count++; 
+   }
+    
+}
+
+result=(result.substring(result.length-1)==',')?result.substring(0,result.length-1):result;
+var content1= document.getElementById("4");
+content1.value=result;
+var content2= document.getElementById("100");
+content2.value="处理结果..."+"\n"+"本次处理提取了"+count+"个套餐ID"+"\n"+"建议分"+frequency+"次处理"+"\n"+"请依次双击以下文本框，每次复制100个ID";
+
+
+for(var q=0;q<frequency;q++){
+
+	var txt=document.createElement("textarea");
+	var t=document.createTextNode(result.substr(q*1500, 1499));
+	txt.appendChild(t);
+	document.body.appendChild(txt);
+
+}
+    
+
+
+
+
+
+
+
+
+}
+
+</script>
+</head>
+<body>
+<!----
+处理前：<textarea rows="20" cols="50" id="1" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+处理后：<textarea rows="20" cols="50" id="2" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+<br/>
+<input type="button"  value="批加逗号批量替换成英文" style="margin-left:430px" onclick="getData()" /><br/>
+<br/>----->
+提取前：<textarea rows="20" cols="32" id="3" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+<input type="button"  value="一键分批次提取" onclick="getData2()" />
+<textarea rows="5" cols="50" id="100" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+提取后：<textarea rows="20" cols="32" id="4" style="overflow-x:scroll;style="overflow-y:scroll;"></textarea>
+<input type="button" onClick="copyfanchuang()" value="全量复制" onclick="getData2()" />
+<br/>
+<br/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
